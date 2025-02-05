@@ -15,7 +15,7 @@ public class TestBase {
     }
     @AfterSuite
     public void ternDown(){
-        app.stop();
+       // app.stop();
 
     }
 }
