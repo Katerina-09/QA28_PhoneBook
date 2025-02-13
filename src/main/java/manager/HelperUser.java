@@ -1,8 +1,8 @@
 package manager;
 
+import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class HelperUser extends HelperBase{
     public HelperUser(WebDriver wd){
@@ -16,22 +16,16 @@ public class HelperUser extends HelperBase{
 
     }
 
-    public void fillLoginRegForm(String email, String password) {
-       // WebElement emailInput = wd.findElement(By.name("email"));
-//        emailInput.click();
-//        emailInput.clear();
-//        emailInput.sendKeys(email);
-        type(By.name("email"), email);
+    public void fillLoginRegForm(User user) {
+
+        type(By.name("email"), user.getEmail());
 
 
-       // WebElement passwordInput = wd.findElement(By.xpath("//input{last()]"));
-//        passwordInput.click();
-//        passwordInput.clear();
-//        passwordInput.sendKeys(password);
-        type(By.xpath("//input[last()]"), password);
+
+        type(By.xpath("//input[last()]"), user.getPassword());
 
     }
-    public void sumitLogin(){
+    public void submitLogin(){
         click(By.xpath("//button[text()='Login']"));
 
     }
@@ -43,4 +37,23 @@ public class HelperUser extends HelperBase{
     public void logout() {
         click(By.xpath("//button[text()='Sign Out']"));
     }
+
+    public void fillWrongLoginRegForm(String email, String password) {
+        type(By.name("email"), email);
+
+
+
+        type(By.xpath("//input[last()]"), password);
+    }
+
+    public String getMessage() {
+        pause(2000);
+        return wd.findElement(By.xpath("//div[text()='Registration failed with code 400']")).getText();
+    }
+
+    public void submitReg() {
+        click(By.xpath("//button[text()='Registration']"));
+
+    }
+
 }

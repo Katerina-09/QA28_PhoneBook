@@ -16,8 +16,8 @@ public class LoginTests extends TestBase {
     public void loginSuccess(){
 
        app.getHelperUser().openLoginRegForm();
-       app.getHelperUser().fillLoginRegForm("firiall68@gmail.com","Tele2user84!");
-       app.getHelperUser().sumitLogin();
+       app.getHelperUser().fillWrongLoginRegForm("firiall68@gmail.com","Tele2user84!");
+       app.getHelperUser().submitLogin();
        //Assert
 //        Assert.assertEquals();
 //        Assert.assertNotEquals();
@@ -30,24 +30,24 @@ public class LoginTests extends TestBase {
     @Test
     public void loginWrongEmail(){
         app.getHelperUser().openLoginRegForm();
-        app.getHelperUser().fillLoginRegForm("firiall68gmail.com","Tele2user84!");
-        app.getHelperUser().sumitLogin();
+        app.getHelperUser().fillWrongLoginRegForm("firiall68gmail.com","Tele2user84!");
+        app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
 
     }
     @Test
     public void loginWrongPassword(){
         app.getHelperUser().openLoginRegForm();
-        app.getHelperUser().fillLoginRegForm("firiall68@gmail.com","Tele2user84");
-        app.getHelperUser().sumitLogin();
+        app.getHelperUser().fillWrongLoginRegForm("firiall68@gmail.com","Tele2user84");
+        app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
 
     }
     @Test
     public void loginUnregisteredUser(){
         app.getHelperUser().openLoginRegForm();
-        app.getHelperUser().fillLoginRegForm("fir@gmail.com","Tele2user84!");
-        app.getHelperUser().sumitLogin();
+        app.getHelperUser().fillWrongLoginRegForm("fir@gmail.com","Tele2user84!");
+        app.getHelperUser().submitLogin();
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password"));
 
     }
