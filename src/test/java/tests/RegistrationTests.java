@@ -54,6 +54,24 @@ public class RegistrationTests extends TestBase{
         Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
 
     }
+
+    @Test
+    public void regEmptyEmail(){
+        app.getHelperUser().openLoginRegForm();
+        app.getHelperUser().fillWrongLoginRegForm(" ","Tele2user84%");
+        app.getHelperUser().submitReg();
+        Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
+
+    }
+
+    @Test
+    public void regEmptyPassword(){
+        app.getHelperUser().openLoginRegForm();
+        app.getHelperUser().fillWrongLoginRegForm("firiall5@gmail.com","  ");
+        app.getHelperUser().submitReg();
+        Assert.assertTrue(app.getHelperUser().isAlertPresent("Wrong email or password format"));
+
+    }
     @Test
     public void regregisteredUser(){
         app.getHelperUser().openLoginRegForm();
@@ -62,7 +80,7 @@ public class RegistrationTests extends TestBase{
         app.getHelperUser().pause(5000);
 
 
-        Assert.assertTrue(app.getHelperUser().isAlertPresent("Registration failed with code 400"));
+        Assert.assertTrue(app.getHelperUser().isAlertPresent("User already exist"));
         //Assert.assertEquals(app.getHelperUser().getMessage(), "Registration failed with code 400");
 
 
