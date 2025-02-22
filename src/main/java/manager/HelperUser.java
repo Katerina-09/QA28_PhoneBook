@@ -55,5 +55,14 @@ public class HelperUser extends HelperBase{
         click(By.xpath("//button[text()='Registration']"));
 
     }
+    public boolean isAdded() {
+        return  isElementPresent(By.xpath("//div[@class='add_form__2rsm2']//button"));
+    }
+    public void login(User user) {
+        openLoginRegForm();
+        fillLoginRegForm(user);
+        submitLogin();
+    }
+
 
 }

@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 public class ApplicationManager {
     WebDriver wd;
     HelperUser helperUser;
+    HelperContact helperContact;
 
     public void init(){
         wd = new ChromeDriver();
@@ -24,5 +25,8 @@ public class ApplicationManager {
     public void stop(){
         wd.quit();
 
+    }
+    public HelperContact getHelperContact() {
+        return helperContact;
     }
 }
